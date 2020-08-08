@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  # App
+  server:
+    container_name: server
+    build: .
+    env_file: .env
+    restart: always
+    ports:
+      - 5151:5151
+    depends_on:
+      - database
+    links:
+      - database
+    volumes:
+      - .:/app
+
+  # MariaDB
+  database:
+    container_name: database
+    image: mariadb:bionic
+    env_file: .env
+    restart: always
+    ports:
+     - 3306:3306
