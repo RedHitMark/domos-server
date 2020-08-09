@@ -1,14 +1,19 @@
-FROM python:3.8.5-alpine
+FROM python:3.8.5
 
-# Copy everything from main folder in /serverw
-COPY . /server
+# Upgrade pip
+RUN python -m pip install --upgrade pip
+
+# Move in server folder
 WORKDIR /server
 
-# Upgrade pip and install all dependencies in requirements.txt
-RUN python -m pip install --upgrade pip
-RUN pip install -r requirements.txt
+# Copy requirements.txt and install all dependencies
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose flask server port
+# Copy all files in main dir
+COPY . .
+
+# Expose Flask server port
 EXPOSE 5151
 
 # Run flask application

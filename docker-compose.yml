@@ -1,20 +1,20 @@
 version: "3"
 
 services:
-  # App
+  # Server
   server:
     container_name: server
     build: .
     env_file: .env
     restart: always
     ports:
-      - 5151:5151
+      - ${FLASK_PORT}:${FLASK_PORT}
+    devices:
+      - "/dev/gpiomem:/dev/gpiomem"
     depends_on:
       - database
     links:
       - database
-    volumes:
-      - .:/app
 
   # MariaDB
   database:
