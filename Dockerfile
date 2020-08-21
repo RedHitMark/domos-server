@@ -10,7 +10,7 @@ WORKDIR /server
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy all files in main dir
+# Copy all files in server directory
 COPY . .
 
 # Expose Flask server port

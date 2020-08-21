@@ -1,4 +1,4 @@
-version: "3"
+version: "3.2"
 
 services:
   # Server
@@ -24,3 +24,5 @@ services:
     restart: always
     ports:
      - 3306:3306
+    volumes:
+     - ./mysql-dump:/docker-entrypoint-initdb.d

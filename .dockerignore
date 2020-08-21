@@ -1,5 +1,9 @@
+.idea
 venv
+mysql-dump
 
+.gitignore
 .env
+.env-template
 docker-compose.yml
 Dockerfile
